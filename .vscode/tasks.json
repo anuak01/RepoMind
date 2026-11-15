@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Backend: run API", "type": "shell", "command": "${workspaceFolder}/backend/.venv/Scripts/python.exe -m uvicorn app.main:app --reload --port 8000",
+      "options": { "cwd": "${workspaceFolder}/backend" }, "isBackground": true, "problemMatcher": [] },
+    { "label": "Frontend: run dev server", "type": "shell", "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/frontend" }, "isBackground": true, "problemMatcher": [] },
+    { "label": "Backend: run tests", "type": "shell", "command": "${workspaceFolder}/backend/.venv/Scripts/python.exe -m pytest -q",
+      "options": { "cwd": "${workspaceFolder}/backend" }, "problemMatcher": [] },
+    { "label": "Frontend: build", "type": "shell", "command": "npm run build",
+      "options": { "cwd": "${workspaceFolder}/frontend" }, "problemMatcher": [] },
+    { "label": "Run RepoMind (backend + frontend)", "dependsOn": ["Backend: run API", "Frontend: run dev server"], "problemMatcher": [] }
+  ]
+}
